@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Jabatan - SIMK</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .sidebar {
+            background-color: white;
+            min-height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 250px;
+        }
+        .logo-section {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .user-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .user-icon {
+            font-size: 3rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .nav-section {
+            margin-bottom: 20px;
+        }
+        .nav-section-title {
+            font-size: 0.75rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+        .nav-link {
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+            text-decoration: none;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .main-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .entries-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-control {
+            display: flex;
+            align-items: center;
+        }
+        .table {
+            background-color: white;
+        }
+        .table th {
+            background-color: #f8f9fa;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .action-btn {
+            padding: 4px 8px;
+            font-size: 0.875rem;
+        }
+        .btn-tambah {
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+        }
+        .pagination {
+            margin-top: 1rem;
+            justify-content: flex-end;
+        }
+        .table-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-section">
+            <i class="fas fa-university logo-icon"></i>
+            <h5 class="mb-0">Universitas Pamulang</h5>
+        </div>
+
+        <div class="user-section">
+            <i class="fas fa-user-circle user-icon"></i>
+            <div>
+                <div class="fw-bold">Welcome, Farhan</div>
+                <small class="text-muted">Administrator</small>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <a href="../index.html" class="nav-link">
+                <i class="fas fa-tachometer-alt"></i>
+                Dashboard
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">MENU KARYAWAN</div>
+            <a href="karyawan.html" class="nav-link">
+                <i class="fas fa-users"></i>
+                Karyawan
+            </a>
+            <a href="jabatan.html" class="nav-link active">
+                <i class="fas fa-briefcase"></i>
+                Jabatan
+            </a>
+            <a href="divisi.html" class="nav-link">
+                <i class="fas fa-building"></i>
+                Divisi
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">MENU ABSENSI</div>
+            <a href="../absensi/absensi.html" class="nav-link">
+                <i class="fas fa-calendar-check"></i>
+                Absensi
+            </a>
+            <a href="../absensi/izin.html" class="nav-link">
+                <i class="fas fa-clock"></i>
+                Izin
+            </a>
+            <a href="../absensi/lembur.html" class="nav-link">
+                <i class="fas fa-calendar-minus"></i>
+                Lembur
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="main-container">
+            <div class="header">
+                <h5 class="mb-0">Data Jabatan</h5>
+            </div>
+
+            <div class="table-controls">
+                <div class="entries-control">
+                    <span>Show</span>
+                    <select class="form-select" style="width: auto;">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                    <span>entries</span>
+                </div>
+                <div class="search-control">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                </div>
+                <a href="" class="btn btn-tambah">
+                    <i class="fas fa-plus me-1"></i> Tambah Jabatan
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Jabatan</th>
+                            <th>Jabatan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>JAB001</td>
+                            <td>Kepala Bagian</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-sm action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>JAB002</td>
+                            <td>Kepala Sub Bagian</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-sm action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>JAB003</td>
+                            <td>Staff</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-sm action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>JAB004</td>
+                            <td>Wakil</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary btn-sm action-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm action-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <div>Showing 1 to 4 of 4 entries</div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination mb-0">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
